@@ -1,0 +1,13 @@
+venv
+models
+.agents
+.claude
+.github
+.pytest_cache
+.vscode
+DocIntResult
+extracted_signatures
+PaddleLocalResult
+sample
+tests
+skills-lock.json

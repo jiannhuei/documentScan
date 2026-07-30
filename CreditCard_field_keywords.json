@@ -1,0 +1,128 @@
+{
+  "keywords": [
+    "CreditLineIslamicPercent",
+    "CreditLineConventionalPercent",
+    "EInvoicePreference",
+    "TaxIdentificationNumberTIN",
+    "SSTRegistrationNumber",
+    "TaxResidentOutsideMalaysia",
+    "CountryOfTaxResidency",
+    "TaxIdNumber",
+    "NoTaxNumberReason",
+    "FatcaDocumentType",
+    "FatcaOtherDocument",
+    "FatcaDocumentsFurnishedDate",
+    "IsPoliticallyExposedPerson",
+    "PepPositionHeld",
+    "MarketingPreference",
+    "OptInCnpOverseas",
+    "OwnsTwoOrMoreCreditCards",
+    "OwnsZeroOrOneCreditCard",
+    "PrincipalApplicantSignatureDate",
+    "SupplementaryApplicantSignatureDate",
+    "VerifiedAndApprovedBy",
+    "VerifierSignatureAndName",
+    "VerifierDate",
+    "PbCardAccountNumber",
+    "PbCardCreditLineRM"
+  ],
+  "aliases": {
+    "CreditLineIslamicPercent": [
+      "CREDIT LINE",
+      "% ISLAMIC"
+    ],
+    "CreditLineConventionalPercent": [
+      "CREDIT LINE",
+      "% CONVENTIONAL"
+    ],
+    "EInvoicePreference": [
+      "PREFERENCE TO RECEIVE E-INVOICE"
+    ],
+    "TaxIdentificationNumberTIN": [
+      "TAX IDENTIFICATION NUMBER (TIN)"
+    ],
+    "SSTRegistrationNumber": [
+      "SST REGISTRATION NUMBER (MANDATORY FOR SST REGISTRANT)"
+    ],
+    "TaxResidentOutsideMalaysia": [
+      "ARE YOU A RESIDENT FOR PURPOSES IN ANY COUNTRY OTHER THAN MALAYSIA"
+    ],
+    "CountryOfTaxResidency": [
+      "COUNTRY OF TAX RESIDENCY"
+    ],
+    "TaxIdNumber": [
+      "TAX ID NUMBER"
+    ],
+    "NoTaxNumberReason": [
+      "IF NO TAX NUMBER. PLEASE INDICATE THE REASON"
+    ],
+    "FatcaDocumentType": [
+      "CERTIFIED RELEVANT AND VALID FATCA DOCUMENTS"
+    ],
+    "FatcaOtherDocument": [
+      "OTHERS, PLEASE SPECIFY"
+    ],
+    "FatcaDocumentsFurnishedDate": [
+      "DATE FULL DOCUMENTS FURNISHED (DD-MM-YY)"
+    ],
+    "IsPoliticallyExposedPerson": [
+      "POLITICALLY EXPOSED PERSON (PEP) DECLARATION",
+      "YES, I AM A POLITICALLY EXPOSED PERSON (PEP) OR A FAMILY MEMBERS AND CLOSE ASSOCIATE OF A PEP"
+    ],
+    "PepPositionHeld": [
+      "POSITION HELD"
+    ],
+    "MarketingPreference": [
+      "Please (/) tick your preference to receive and/or be informed"
+    ],
+    "OptInCnpOverseas": [
+      "Please tick if you wish to opt-in for CNP and Overseas Transactions. For more information on CNP and Overseas Transactions and the risk associated to such transactions, please visit www.pbebank.com."
+    ],
+    "OwnsTwoOrMoreCreditCards": [
+      "I presently hold Credit Cards from two (2) or more Credit Card issuers"
+    ],
+    "OwnsZeroOrOneCreditCard": [
+      "I presently do not hold any or am holding only one (1) Credit Card"
+    ],
+    "PrincipalApplicantSignatureDate": [
+      {
+        "label": "DATE",
+        "context": [
+          "SIGNATURE: PRINCIPAL CARD APPLICANT",
+          "PRINCIPAL CARD APPLICANT"
+        ]
+      }
+    ],
+    "SupplementaryApplicantSignatureDate": [
+      {
+        "label": "DATE",
+        "context": [
+          "SIGNATURE: SUPPLEMENTARY CARO APPLICANT",
+          "SUPPLEMENTARY CARO APPLICANT"
+        ]
+      }
+    ],
+    "VerifiedAndApprovedBy": [
+      "VERIFIED AND APPROVED BY"
+    ],
+    "VerifierSignatureAndName": [
+      "SIGNATURE & NAME"
+    ],
+    "VerifierDate": [
+      {
+        "label": "DATE",
+        "context": [
+          "VERIFIED AND APPROVED BY",
+          "HEAD OF BRANCH/DIVISION/DEPARTMENT"
+        ]
+      }
+    ],
+    "PbCardAccountNumber": [
+      "ACCOUNT NO."
+    ],
+    "PbCardCreditLineRM": [
+      "CREDIT LINE RM"
+    ]
+  },
+  "fuzzy_threshold": 1.0
+}

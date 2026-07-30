@@ -1,0 +1,62 @@
+{
+  "templates": {
+    "page0": {
+      "EInvoicePreference": {
+        "type": "yesno",
+        "yes": [0.375, 0.278],
+        "no": [0.463, 0.278],
+        "box_size": 0.028
+      },
+      "TaxResidentOutsideMalaysia": {
+        "type": "yesno",
+        "yes": [0.375, 0.372],
+        "no": [0.463, 0.372],
+        "box_size": 0.028
+      },
+      "FatcaDocumentType": {
+        "type": "option",
+        "options": [
+          {
+            "label": "FORM W-9",
+            "coord": [0.118, 0.498]
+          },
+          {
+            "label": "FORM W-8BEN",
+            "coord": [0.235, 0.498]
+          }
+        ],
+        "box_size": 0.030
+      },
+      "IsPoliticallyExposedPerson": {
+        "type": "single",
+        "coord": [0.155, 0.564],
+        "value": "YES",
+        "box_size": 0.032
+      },
+      "MarketingPreference": {
+        "type": "yesno",
+        "yes": [0.312, 0.575],
+        "no": [0.372, 0.575],
+        "box_size": 0.024
+      },
+      "OptInCnpOverseas": {
+        "type": "single",
+        "coord": [0.130, 0.672],
+        "value": "YES",
+        "box_size": 0.026
+      },
+      "OwnsTwoOrMoreCreditCards": {
+        "type": "single",
+        "coord": [0.130, 0.765],
+        "value": "YES",
+        "box_size": 0.026
+      },
+      "OwnsZeroOrOneCreditCard": {
+        "type": "single",
+        "coord": [0.130, 0.816],
+        "value": "YES",
+        "box_size": 0.026
+      }
+    }
+  }
+}
