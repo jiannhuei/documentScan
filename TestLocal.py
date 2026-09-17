@@ -3234,9 +3234,9 @@ def _render_json_to_markdown(json_data):
 # ---------------------------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------------------------
-INPUT_DOCUMENT = os.environ.get("OCR_INPUT_DOCUMENT", "sample/Test999.pdf")
+INPUT_DOCUMENT = os.environ.get("OCR_INPUT_DOCUMENT", "sample/Test5.pdf")
 OUTPUT_SUMMARY = _runtime_ocr_config()["output_summary"]
-FIELD_KEYWORD_CONFIG = os.environ.get("OCR_FIELD_CONFIG", "DocIntResult/Test999.pdf_field_keywords.json")
+FIELD_KEYWORD_CONFIG = os.environ.get("OCR_FIELD_CONFIG", "DocIntResult/Test5.pdf_field_keywords.json")
 STRICT_CONFIDENCE_THRESHOLD = float(os.environ.get("OCR_STRICT_CONFIDENCE", "0.8"))
 
 

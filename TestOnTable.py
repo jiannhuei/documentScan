@@ -20,13 +20,13 @@ from azure.ai.documentintelligence.models import AnalyzeResult
 # ---------------------------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------------------------
-ENDPOINT = ""
+ENDPOINT = "https://pbb-document-intelligence-poc.cognitiveservices.azure.com/"
 KEY = ""
 INPUT_DOCUMENT = "sample/Test5.pdf"
 FIELD_KEYWORD_CONFIG = "DocIntResult/Test5.pdf_field_keywords.json"
-OUTPUT_MARKDOWN = f"PaddleLocalResult/{os.path.basename(INPUT_DOCUMENT)}_full_document_context.md"
-OUTPUT_EXCEL = f"PaddleLocalResult/{os.path.basename(INPUT_DOCUMENT)}_extracted_tables.xlsx"
-OUTPUT_KEYWORD_JSON = f"PaddleLocalResult/{os.path.basename(INPUT_DOCUMENT)}_result.json"
+OUTPUT_MARKDOWN = f"DocIntResult/{os.path.basename(INPUT_DOCUMENT)}_full_document_context.md"
+OUTPUT_EXCEL = f"DocIntResult/{os.path.basename(INPUT_DOCUMENT)}_extracted_tables.xlsx"
+OUTPUT_KEYWORD_JSON = f"DocIntResult/{os.path.basename(INPUT_DOCUMENT)}_result.json"
 CHECKBOX_TEMPLATE_CONFIG = os.environ.get("OCR_CHECKBOX_TEMPLATE_CONFIG", "DocIntResult/checkbox_template.json")
 STRICT_CONFIDENCE_THRESHOLD = float(os.environ.get("OCR_STRICT_CONFIDENCE", "0.8"))
 DEBUG_TEMPLATE_OVERLAY = os.environ.get("OCR_DEBUG_TEMPLATE_OVERLAY", "1") == "1"

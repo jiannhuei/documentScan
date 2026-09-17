@@ -51,7 +51,7 @@ for _stream in (sys.stdout, sys.stderr):
 # ---------------------------------------------------------------------------
 # CONFIGURATION  (reuse same credentials as TestOnTable.py)
 # ---------------------------------------------------------------------------
-ENDPOINT = ""
+ENDPOINT = "https://pbb-document-intelligence-poc.cognitiveservices.azure.com/"
 KEY = ""
 OUTPUT_DIR = "DocIntResult"
 

@@ -8,7 +8,6 @@ import spacy
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from huggingface_hub import hf_hub_download
 from ultralytics import YOLO
-<<<<<<< HEAD
 
 # Required on this stack: PaddleX may override defaults, so set flags explicitly.
 os.environ["FLAGS_enable_pir_api"] = "0"
@@ -20,10 +19,6 @@ from paddleocr import PaddleOCR
 
 CLEAN_MODE = os.getenv("SIGNATURE_CLEAN_MODE", "auto").strip().lower()
 
-=======
-from paddleocr import PaddleOCR
-
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 # -------------------------------------------------------------------------
 # 1. Initialization & Pre-trained Model Loading (Zero Training Required)
 # -------------------------------------------------------------------------
@@ -39,7 +34,6 @@ sig_model_path = hf_hub_download(
 yolo_model = YOLO(sig_model_path)
 
 print("[*] Initializing PaddleOCR Engine...")
-<<<<<<< HEAD
 ocr = PaddleOCR(
     use_textline_orientation=True,
     lang='en',
@@ -49,9 +43,6 @@ ocr = PaddleOCR(
     enable_hpi=False,
     enable_cinn=False,
 )
-=======
-ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 
 
 # -------------------------------------------------------------------------
@@ -62,12 +53,9 @@ def clean_signature_overlap(crop):
     Isolates signature ink from background lines, printed text, and stamps.
     Uses HSV color filtering for colored ink and adaptive local thresholding for black ink.
     """
-<<<<<<< HEAD
     if CLEAN_MODE == "auto":
         return _auto_select_clean_signature_overlap(crop)
 
-=======
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
     hsv = cv2.cvtColor(crop, cv2.COLOR_BGR2HSV)
     
     # Isolate Blue and Red ink
@@ -81,7 +69,6 @@ def clean_signature_overlap(crop):
 
     # Local variance thresholding for dark/black ink
     gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
-<<<<<<< HEAD
     blur = cv2.GaussianBlur(gray, (3, 3), 0)
     adaptive_thresh = cv2.adaptiveThreshold(
         blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
@@ -92,20 +79,10 @@ def clean_signature_overlap(crop):
     # Combine color and adaptive dark ink masks
     combined = cv2.bitwise_or(color_mask, adaptive_thresh)
     combined = cv2.bitwise_or(combined, otsu_thresh)
-=======
-    adaptive_thresh = cv2.adaptiveThreshold(
-        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-        cv2.THRESH_BINARY_INV, 21, 10
-    )
-
-    # Combine color and adaptive dark ink masks
-    combined = cv2.bitwise_or(color_mask, adaptive_thresh)
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 
     # Morphological cleaning to erase isolated noise dots and thin lines
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
     cleaned_mask = cv2.morphologyEx(combined, cv2.MORPH_OPEN, kernel)
-<<<<<<< HEAD
     base_mask = cleaned_mask.copy()
 
     h, w = cleaned_mask.shape
@@ -247,14 +224,11 @@ def clean_signature_overlap(crop):
     # Preserve complete signature ink; do not aggressively cut off content below the main body.
     # If signature extends below form lines, that's legitimate signature ink that should be kept.
     # The line removal already happened in the morphological operations above.
-=======
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 
     # Return dark signature stroke on clean white background
     return cv2.cvtColor(cv2.bitwise_not(cleaned_mask), cv2.COLOR_GRAY2BGR)
 
 
-<<<<<<< HEAD
 def _score_cleaned_signature(clean_bgr):
     """Higher is better: preserve signature ink while penalizing residual form lines/noise."""
     gray = cv2.cvtColor(clean_bgr, cv2.COLOR_BGR2GRAY)
@@ -554,8 +528,6 @@ def is_text_like_false_positive(sig_box, ocr_results, img):
     return False
 
 
-=======
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 # -------------------------------------------------------------------------
 # 3. Spatial Parsing & Named Entity Recognition (NER)
 # -------------------------------------------------------------------------
@@ -643,22 +615,16 @@ def render_pdf_page_task(pdf_path, page_idx, dpi=200):
 def process_single_image(img, page_num, base_name, output_dir):
     """Core extraction workflow for a single image frame."""
     # Fast Pass: Detect signature bounding boxes with YOLO
-<<<<<<< HEAD
     # Use 0.08 confidence for sensitive detection; filtering removes checkboxes and text
     yolo_results = yolo_model(img, conf=0.08, iou=0.45, verbose=False)
     sig_boxes = yolo_results[0].boxes.xyxy.cpu().numpy()
     print(f"[*] Page {page_num}: Detected {len(sig_boxes)} signatures")
-=======
-    yolo_results = yolo_model(img, verbose=False)
-    sig_boxes = yolo_results[0].boxes.xyxy.cpu().numpy()
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
 
     # Skip heavy OCR if no signatures are found on this page
     if len(sig_boxes) == 0:
         return 0
 
     # Run OCR only on pages where signatures exist
-<<<<<<< HEAD
     ocr_results = normalize_ocr_results(ocr.predict(img))
 
     # Keep low-confidence candidates only if they do not look like printed text regions
@@ -673,19 +639,12 @@ def process_single_image(img, page_num, base_name, output_dir):
     if len(filtered_sig_boxes) == 0:
         return 0
 
-=======
-    ocr_results = ocr.ocr(img, cls=False)
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
     doc_title = extract_document_title(ocr_results, fallback_name=base_name)
 
     extracted_count = 0
     h, w, _ = img.shape
 
-<<<<<<< HEAD
     for idx, box in enumerate(filtered_sig_boxes):
-=======
-    for idx, box in enumerate(sig_boxes):
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
         x1, y1, x2, y2 = map(int, box[:4])
         
         # Add 5px padding around signature crop
@@ -770,7 +729,6 @@ def process_document(file_path, output_dir="extracted_signatures"):
 # 5. Pipeline Execution
 # -------------------------------------------------------------------------
 if __name__ == "__main__":
-<<<<<<< HEAD
     # Manually assign documents to process
     documents = [
         "sample/signature/Test2.pdf",
@@ -784,9 +742,3 @@ if __name__ == "__main__":
             process_document(doc_path)
         else:
             print(f"File not found: {doc_path}")
-=======
-    # Example usage:
-    # process_document("my_contract.pdf")
-    # process_document("scanned_image.png")
-    pass
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b

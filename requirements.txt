@@ -20,8 +20,4 @@ paddlepaddle
 spacy
 huggingface_hub
 
-<<<<<<< HEAD
 # python -m spacy download en_core_web_sm
-=======
-python -m spacy download en_core_web_sm
->>>>>>> 66f68420fec1941c9896d778fcfdc067697c4b7b
